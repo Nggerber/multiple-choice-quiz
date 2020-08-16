@@ -1,52 +1,91 @@
-// variables
-
+// variables for start button
 const start = document.getElementById("start-button");
-const a = document.getElementById("a-button").value;
-const b = document.getElementById("b-button").value;
-const c = document.getElementById("c-button").value;
-const d = document.getElementById("d-button".value);
+// variable for text box to display question
+const questionPrompt = document.getElementById("question-text");
+choicesEl = document.getElementById("choices-list")
 
-// variable to display 
+//Variables for the score
+let score = 0;
+let correct = 0;
+let incoreect = 0;
 
-const question = document.getElementById("question-text")
 
 
 //variable for the questions
 
-let questions = [
-    
-   
+const questions = [
+    { 
+        question: "What letter is after b?", 
+        answer: "c",
+        choices: ["a", "b", "c", "d"]
+    },
 
-    {question : "What letter is after b", answer : "C"},
+   {
+        question: "What letter comes before b?",
+        answer: "a",
+        choices: ["a", "b", "c", "d"]
+    },
 
- ];
+    {
+        question: "What letter comes after c?",
+        answer: "d",
+        choices: ["a", "b", "c", "d"]
+    },
 
- function checkAnswer() {
-     console.log(a)
+    {
+        question: "What letter comes after a?",
+        answer: "b",
+        choices: ["a", "b", "c", "d"]
+    },
+]
 
-
-
-
- }
-
+//function to start the game
 function startQuiz() {
-    console.log("quiz is running")
-    for ( i = 0; i < questions.length; i++) {
-        question.innerHTML = questions[i].question;
+    console.log("game is started")
 
-        function checkAnswer() {
-            if (answer[i] === c)
-            console.log(correct)
-
-        }
-
+    //set score 
+    incorrect = 0;
+    correct = 0;
+    score = 0;
+    //run function to display questions
+    displayQuestion();
+    startTimer();
     
-    }
-     
-}  
+}
+
+//function to display the question text in question text box from my array of questions
+function displayQuestion() {
 
 
+    let questionIndex = questions[0].question;
+    let choicesIndex = questions[0].choices;
+    console.log(questionIndex)
+    questionPrompt.innerHTML = questionIndex
+    choicesEl.innerHTML = choicesIndex
+    
+    
 
+}
+
+function startTimer() {
+
+    const timeEl = document.getElementById("time");
+    let secondsLeft = 30;
+
+    timeEl.innerText = 30
+
+    const timeId = setInterval(function() {
+    secondsLeft --;
+    timeEl.innerText = secondsLeft;
+
+    if (secondsLeft === 0) {
+    alert("times up")
+    clearInterval(timeId);
+}
+
+}, 1000);
+
+}
 
 
             
